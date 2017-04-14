@@ -7,9 +7,10 @@
 #+LANGUAGE:  en
 
 ** Discription
-   This program can be used to generate, store, analyze social relationship network
-** Usage
+   This program can be used to generate, store, analyze social relationship network\
 
+** Usage
+   ...
 ** License
    The MIT License
 

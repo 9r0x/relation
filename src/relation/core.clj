@@ -1,4 +1,5 @@
 (ns relation.core
+  (:require [clojure.java.io :as io])
   (use relation.aux)
   )
 
@@ -28,3 +29,6 @@
       (pr "Already deleted")
       (def relations (conj-dissoc relations (num-to-key index1) (num-to-key index2))))))
 
+(defn students-write []
+  (with-open [wrtr (writer "./data/students.db")]
+      (.write wrtr (str students))))
