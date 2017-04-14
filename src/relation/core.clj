@@ -18,9 +18,11 @@
 (defn add-relation [name1 name2]
   (let [index1 (.get students (keyword name1))
         index2 (.get students (keyword name2))]
-    (if (>= (.indexOf ((num-to-key index1) relations) (num-to-key index2)) 0)
-      (pr "Already exist")
-      (def relations (conj-assoc relations (num-to-key index1) (num-to-key index2))))))
+    (if (not (and (contains? students (keyword name1)) (contains? students (keyword name2))))
+      (pr "No such name")
+      (if (>= (.indexOf ((num-to-key index1) relations) (num-to-key index2)) 0)
+        (pr "Already exist")
+        (def relations (conj-assoc relations (num-to-key index1) (num-to-key index2)))))))
 
 (defn delete-relation [name1 name2]
   (let [index1 (.get students (keyword name1))
