@@ -43,3 +43,8 @@
 
 (defn relations-read []
   (def relations (read-string (slurp "./data/relations.db"))))
+
+(defn double-relation [name1 name2]
+  (add-relation name1 name2)
+  (add-relation name2 name1)
+  )
