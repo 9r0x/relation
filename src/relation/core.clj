@@ -30,5 +30,16 @@
       (def relations (conj-dissoc relations (num-to-key index1) (num-to-key index2))))))
 
 (defn students-write []
-  (with-open [wrtr (writer "./data/students.db")]
+  (with-open [wrtr (io/writer "./data/students.db")]
       (.write wrtr (str students))))
+
+(defn relations-write []
+  (with-open [wrtr (io/writer "./data/relations.db")]
+    (.write wrtr (str relations))))
+
+(defn students-read []
+  (def students (read-string (slurp "./data/students.db"))))
+
+
+(defn relations-read []
+  (def relations (read-string (slurp "./data/relations.db"))))
