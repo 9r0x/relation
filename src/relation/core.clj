@@ -50,3 +50,6 @@
   (add-relation name1 name2)
   (add-relation name2 name1)
   )
+
+(defn find-name [val]
+  (filter (comp #{val} students) (keys students)))
