@@ -9,8 +9,9 @@
 ** Discription
    This program can be used to generate, store, analyze social relationship network
 
-** Usage
-   ...
+** Example
+   [[./pic/relation-network.jpg]]
+
 ** License
    The MIT License
 
