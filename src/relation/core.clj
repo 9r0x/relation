@@ -54,19 +54,7 @@
 (defn find-name [val]
   (filter (comp #{val} students) (keys students)))
 
-;; (defn relations-export-v1 []
-;;   (do
-;;     (def temp "{")
-;;     (for [x relations]
-;;       (map (fn [l] (def temp (str temp (clojure.string/replace (str (first x) " -> " l ", ") ":" "")))) (second x)))
-;;     (def temp (str (subs temp 0 (- (count temp) 2)) "}" ))
-;;     )
-;;   )
-
-(defn relations-export-v2 []
-(do
- (def temp "{")
- (for [x relations]
-   (map (fn [l] (def temp (clojure.string/replace (str temp  (str  (first (find-name  (bigint (subs (str (first x)) 1)))))  " -> " (str (first (find-name  (bigint (subs (str l) 1))))) ", ") ":" ""))) (second x)))
-   (def temp (str (subs temp 0 (- (count temp) 2)) "}" ))
-))
+(defn relations-export [data]
+  (let [combinations (mapcat #(for [vs (second %)] [(first %) vs]) data)
+        comb-strings (map (fn [[k v]] (str (name (first (find-name  (bigint (name k))))) " -> " (name (first (find-name  (bigint (name v))))))) combinations)]
+    (str "{" (clojure.string/join ", " comb-strings) "}")))
