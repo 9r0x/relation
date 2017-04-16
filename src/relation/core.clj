@@ -9,6 +9,10 @@
   (def relations {})
  )
 
+
+(defn get-student-key [name]
+  (keyword (str ((keyword name) students))))
+
 (defn add-student [name]
   (if (contains? students (keyword name))
     (pr "Already exist")
@@ -58,3 +62,10 @@
   (let [combinations (mapcat #(for [vs (second %)] [(first %) vs]) data)
         comb-strings (map (fn [[k v]] (str (name (first (find-name  (bigint (name k))))) " -> " (name (first (find-name  (bigint (name v))))))) combinations)]
     (str "{" (clojure.string/join ", " comb-strings) "}")))
+
+;; must be valid input
+;; to be repaired
+(defn loves? [name1 name2]
+  (not (neg? (.indexOf ((get-student-key name1) relations) (get-student-key name2)))))
+
+
