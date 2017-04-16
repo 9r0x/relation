@@ -54,7 +54,7 @@
 (defn find-name [val]
   (filter (comp #{val} students) (keys students)))
 
-;; (defn relations-export []
+;; (defn relations-export-v1 []
 ;;   (do
 ;;     (def temp "{")
 ;;     (for [x relations]
